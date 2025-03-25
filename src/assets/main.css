@@ -1,0 +1,74 @@
+@import './base.css';
+
+#app {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+/* @media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    place-items: center;
+  }
+
+  #app {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 2rem;
+  }
+} */
+
+.background {
+  background-color: var(--blue);
+  height: 100vh;
+  width: 100%;
+  justify-items: center;
+  align-content: center;
+}
+.bg-1 {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.ellipse {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.forgot-pass-text {
+  color: white;
+  text-align: right;
+}
+.form-container {
+  height: auto;
+  width: auto;
+}
+.form-container,
+.form-container *,
+.login-btn,
+.forgot-pass-text {
+  z-index: 1000;
+}
+.login-btn {
+  width: 100%;
+}
+.user-input {
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+.el-input__wrapper {
+  background-color: transparent;
+}
+.drawer {
+  margin: 0;
+  padding: 0;
+}
