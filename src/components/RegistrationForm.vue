@@ -3,25 +3,25 @@
 
   <el-drawer v-model="visible" :show-close="false" size="70%" class="drawer">
     <h2>Registration</h2>
-    <el-form>
-      <el-form-item label="First Name" required>
-        <el-input v-model="form.fname"></el-input>
+    <el-form ref="formRef" :model="student" :rules="rules">
+      <el-form-item label="First Name" prop="firstName" required>
+        <el-input v-model="student.fname"></el-input>
       </el-form-item>
-      <el-form-item label="Middle Initial" required>
-        <el-input v-model="form.minitial"></el-input>
+      <el-form-item label="Middle Initial" prop="middleInitial" required>
+        <el-input v-model="student.minitial"></el-input>
       </el-form-item>
-      <el-form-item label="Last Name" required>
-        <el-input v-model="form.lname"></el-input>
+      <el-form-item label="Last Name" prop="lastName" required>
+        <el-input v-model="student.lname"></el-input>
       </el-form-item>
     </el-form>
-    <el-form-item label="Birthday" required>
+    <el-form-item label="Birthday" prop="birthday" required>
       <el-date-picker v-model="date" type="date" format="MM/DD/YYYY" placeholder="Pick a day" />
     </el-form-item>
-    <el-form-item label="Age" required>
-      <el-input v-model="form.age" type="number"></el-input>
+    <el-form-item label="Age" prop="age" required>
+      <el-input v-model="student.age" type="number"></el-input>
     </el-form-item>
 
-    <el-form-item label="Course" required>
+    <el-form-item label="Course" prop="course" required>
       <el-select v-model="value" placeholder="Select" size="large" style="width: 240px">
         <el-option
           v-for="item in courses"
@@ -30,30 +30,30 @@
           :value="item.value"
         />
       </el-select>
-      <el-button @click="showModal = true">Submit</el-button>
+      <el-button @click="confirmSubmit">Submit</el-button>
     </el-form-item>
 
     <div v-if="showModal">
       <Modal @close="showModal = false" @submit="addStudentData">
         <el-text tag="p">
           <el-text tag="b">Full Name: </el-text>
-          {{ form.fname }} {{ form.minitial }}.
-          {{ form.lname }}
+          {{ student.fname }} {{ student.minitial }}.
+          {{ student.lname }}
         </el-text>
 
         <el-text tag="p">
           <el-text tag="b">Birthday: </el-text>
-          {{ form.birthday }}
+          {{ student.birthday }}
         </el-text>
 
         <el-text tag="p">
           <el-text tag="b">Age: </el-text>
-          {{ form.age }}
+          {{ student.age }}
         </el-text>
 
         <el-text tag="p">
           <el-text tag="b">Course: </el-text>
-          {{ form.course }}
+          {{ student.course }}
         </el-text>
       </Modal>
     </div>
@@ -61,32 +61,78 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { reactive } from 'vue'
+import { ref, computed, defineEmits, reactive } from 'vue'
 import Modal from './Modal.vue'
+import type { FormInstance, FormRules } from 'element-plus'
 
 const visible = ref(false)
 const value = ref('') // selected course
 const date = ref('')
 const showModal = ref(false)
+const emit = defineEmits(['save'])
 let studentId = 1
+const formRef = ref<FormInstance | null>(null)
 
-const form = reactive({
+const student = reactive({
   id: studentId,
   fname: '',
   minitial: '',
   lname: '',
   birthday: date,
-  age: '',
+  age: 0,
   course: value,
 })
+const studentList: {
+  id: number
+  fname: string
+  minitial: string
+  lname: string
+  birthday: string
+  age: number
+  course: string
+}[] = []
 
-function addStudentData() {
-  localStorage.setItem('student', JSON.stringify(form))
+// const computedAge: number = computed(() => {
+//   if (!student.value.birthday) {
+//     return 0
+//   } else {
+//     const birthYear = student.value.birthday.getFullYear()
+//     return new Date().getFullYear() - birthYear
+//   }
+// })
+
+// Validation Rules
+const rules = ref<FormRules>({
+  fname: [{ required: true, message: 'Please input your first name', trigger: 'blur' }],
+  minitial: [{ required: true, message: 'Please input your first name', trigger: 'blur' }],
+  lname: [{ required: true, message: 'Please input your last name', trigger: 'blur' }],
+  birthday: [{ required: true, message: 'Please select birth date', trigger: 'change' }],
+  course: [{ required: true, message: 'Please select a course', trigger: 'change' }],
+})
+
+const confirmSubmit = () => {
+  if (!formRef.value) {
+    return
+  } else {
+    formRef.value.validate((valid) => {
+      if (valid) {
+        showModal.value = true
+      } else {
+        return
+      }
+    })
+  }
+  showModal.value = true
+}
+
+function addStudentData(this: any) {
+  localStorage.setItem('student', JSON.stringify(student))
+  studentList.push(student)
   studentId++
   showModal.value = false
 
-  this.$emit('studentData', form.value)
+  // emit('studentData', form)
+  console.log(studentList)
   //   console.log(localStorage.getItem('student'))
 }
 
