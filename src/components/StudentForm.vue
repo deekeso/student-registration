@@ -1,29 +1,41 @@
 <template>
   <el-drawer v-model="visible" :title="isEditing ? 'Edit Student' : 'Add Student'" size="50%">
     <el-form ref="formRef" :model="student" :rules="rules" label-width="120px">
-      <el-form-item label="First Name" prop="firstName">
-        <el-input v-model="student.firstName" />
-      </el-form-item>
+      <el-row :gutter="10">
+        <el-col :xs:="24" :md="9">
+          <el-form-item label="First Name" prop="firstName">
+            <el-input v-model="student.firstName" />
+          </el-form-item>
+        </el-col>
 
-      <el-form-item label="Middle Initial" prop="middleInitial">
-        <el-input v-model="student.middleInitial" maxlength="1" class="form-input" />
-      </el-form-item>
+        <el-col :xs="24" :md="6">
+          <el-form-item label="Middle Initial" prop="middleInitial" required>
+            <el-input v-model="student.middleInitial" maxlength="1" class="form-input" />
+          </el-form-item>
+        </el-col>
 
-      <el-form-item label="Last Name" prop="lastName">
-        <el-input v-model="student.lastName" class="form-input" />
-      </el-form-item>
+        <el-col :xs:="24" :md="9">
+          <el-form-item label="Last Name" prop="lastName">
+            <el-input v-model="student.lastName" class="form-input" />
+          </el-form-item>
+        </el-col>
 
-      <el-form-item
-        label="Birth Date"
-        prop="birthDate"
-        :rules="[{ validator: validateBirthDate, trigger: 'change' }]"
-      >
-        <el-date-picker v-model="student.birthDate" type="date" @change="calculateAge" />
-      </el-form-item>
+        <el-col :xs="24" :sm="12">
+          <el-form-item
+            label="Birth Date"
+            prop="birthDate"
+            :rules="[{ validator: validateBirthDate, trigger: 'change' }]"
+          >
+            <el-date-picker v-model="student.birthDate" type="date" @change="calculateAge" />
+          </el-form-item>
+        </el-col>
 
-      <el-form-item label="Age">
-        <el-input v-model="student.age" disabled />
-      </el-form-item>
+        <el-col :xs="24" :sm="12">
+          <el-form-item label="Age">
+            <el-input v-model="student.age" disabled />
+          </el-form-item>
+        </el-col>
+      </el-row>
 
       <el-form-item label="Address">
         <el-input v-model="student.address" class="form-input" />

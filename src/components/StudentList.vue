@@ -9,12 +9,12 @@
         :sm="12"
         :md="8"
         :lg="6"
-        :xl="4"
+        :xl="1"
       >
         <el-card shadow="hover" class>
           <div class="student-container">
             <div class="details">
-              <img src="../assets/images/icon.png" alt="student-icon" class="icon" />
+              <img src="../assets/images/icon.jpg" alt="student-icon" class="icon" />
               <h2>{{ student.firstName }} {{ student.lastName }}</h2>
               <h3>{{ student.course }}</h3>
               <p>{{ student.age }} years old</p>
@@ -24,9 +24,14 @@
               </p>
             </div>
           </div>
-
-          <el-button type="warning" @click="editStudent(student, index)">Edit</el-button>
-          <el-button type="danger" @click="store.deleteStudent(index)">Delete</el-button>
+          <div class="btn-container">
+            <el-button @click="editStudent(student, index)">
+              <el-icon><Edit class="edit-icon icon-btn" /></el-icon>
+            </el-button>
+            <el-button type="danger" @click="store.deleteStudent(index)">
+              <el-icon class="edit-icon icon-btn"><Delete /></el-icon>
+            </el-button>
+          </div>
         </el-card>
       </el-col>
     </el-row>

@@ -1,5 +1,8 @@
 @import './base.css';
 
+body {
+  background-color: var(--blue);
+}
 .el-header {
   background-color: var(--blue);
   color: var(--white);
@@ -7,13 +10,23 @@
   align-content: center;
 }
 .save-btn {
-  background-color: var(--blue);
-  color: var(--white);
+  background-color: var(--white);
+  color: var(--blue);
   border: none;
   width: 100%;
 }
+.save-btn span {
+  font-weight: bold;
+  text-transform: ;
+}
 .el-input__wrapper:focus {
   border: 2px solid var(--blue);
+}
+.el-select__selected-item {
+  color: var(--white);
+}
+.el-select__wrapper.el-select__selected-item {
+  background-color: #ffffff4f;
 }
 /* .el-input__inner,
 .el-form-item__label {
@@ -21,6 +34,9 @@
 } */
 .form-input :deep(.el-input__inner) {
   color: black;
+}
+.el-form-item__label {
+  color: var(--white);
 }
 .el-drawer {
   width: 80%;
@@ -37,16 +53,18 @@
 .el-card {
   height: 100%;
   width: 100%;
-  background: transparent;
+  background: var(--white-soft);
   justify-items: center;
   text-align: center;
-  border: 1px solid black;
 }
 .el-card * {
   margin-block: 5px;
 }
+.el-card__body {
+  padding: 0.2rem;
+}
 .icon {
-  height: 6rem;
+  height: 8rem;
   border-radius: 100%;
 }
 h2 {
@@ -62,4 +80,13 @@ h3 {
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+.btn-container {
+  padding: 0;
+}
+.icon-btn {
+  height: 1.5rem;
+}
+.details {
+  margin-bottom: 20px;
 }
