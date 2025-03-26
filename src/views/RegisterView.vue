@@ -1,4 +1,7 @@
 <template>
+  <el-header>
+    <h1>Registered Students</h1>
+  </el-header>
   <div class="registration-container">
     <el-drawer v-model="drawerVisible" title="Student Registration">
       <StudentForm :studentData="selectedStudent" @save="addStudent" />

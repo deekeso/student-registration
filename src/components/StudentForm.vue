@@ -41,7 +41,7 @@
         </el-select>
       </el-form-item>
 
-      <el-button type="primary" @click="confirmSubmit">Save</el-button>
+      <el-button type="primary" @click="confirmSubmit" class="save-btn">Save</el-button>
     </el-form>
   </el-drawer>
 

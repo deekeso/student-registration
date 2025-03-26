@@ -1,17 +1,26 @@
 <template>
   <el-button type="primary" @click="openForm">Add Student</el-button>
-
-  <el-row :gutter="20">
-    <el-col v-for="(student, index) in store.students" :key="index" :span="6">
-      <el-card shadow="hover">
-        <h3>{{ student.firstName }} {{ student.lastName }}</h3>
-        <p><b>Course:</b> {{ student.course }}</p>
-        <p><b>Age:</b> {{ student.age }}</p>
-        <el-button type="warning" @click="editStudent(student, index)">Edit</el-button>
-        <el-button type="danger" @click="store.deleteStudent(index)">Delete</el-button>
-      </el-card>
-    </el-col>
-  </el-row>
+  <div class="card-container">
+    <el-row :gutter="20">
+      <el-col
+        v-for="(student, index) in store.students"
+        :key="index"
+        :xs="24"
+        :sm="12"
+        :md="8"
+        :lg="6"
+        :xl="4"
+      >
+        <el-card shadow="hover" class>
+          <h3>{{ student.firstName }} {{ student.lastName }}</h3>
+          <p><b>Course:</b> {{ student.course }}</p>
+          <p><b>Age:</b> {{ student.age }}</p>
+          <el-button type="warning" @click="editStudent(student, index)">Edit</el-button>
+          <el-button type="danger" @click="store.deleteStudent(index)">Delete</el-button>
+        </el-card>
+      </el-col>
+    </el-row>
+  </div>
 
   <StudentForm ref="formRef" @save="saveStudent" />
 </template>

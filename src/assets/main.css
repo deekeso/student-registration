@@ -1,6 +1,6 @@
 @import './base.css';
 @import './login.css';
-
+@import './registration.css';
 #app {
   width: 100%;
   margin: 0;
@@ -43,8 +43,4 @@
   position: absolute;
   bottom: 0;
   left: 0;
-}
-.drawer {
-  margin: 0;
-  padding: 0;
 }
