@@ -1,7 +1,5 @@
 <template>
   <div class="registration-container">
-    <el-button type="primary" @click="openDrawer">Register Student</el-button>
-
     <el-drawer v-model="drawerVisible" title="Student Registration">
       <StudentForm :studentData="selectedStudent" @save="addStudent" />
     </el-drawer>

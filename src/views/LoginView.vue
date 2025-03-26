@@ -62,10 +62,10 @@ function onSubmit() {
   }
 }
 </script>
-
+<!-- 
 <style scoped>
 .el-input__wrapper,
 .form-container {
   background-color: transparent;
 }
-</style>
+</style> -->
