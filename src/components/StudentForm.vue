@@ -31,7 +31,13 @@
 
       <el-form-item label="Course">
         <el-select v-model="student.course">
-          <el-option label="BS Tourism" value="BS Tourism" />
+          <el-option
+            v-for="item in courses"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+            :disabled="item.disabled"
+          />
           <el-option label="BS HRM" value="BS HRM" />
         </el-select>
       </el-form-item>
@@ -175,6 +181,284 @@ const submitForm = () => {
   confirmVisible.value = false
   visible.value = false
 }
-
 defineExpose({ openDrawer })
+
+const courses = [
+  {
+    value: 'Accountancy',
+    label: 'Accountancy',
+  },
+  {
+    value: 'Agricultural Engineering',
+    label: 'Agricultural Engineering',
+  },
+  {
+    value: 'Architecture',
+    label: 'Architecture',
+  },
+  {
+    value: 'Aerospace Engineering',
+    label: 'Aerospace Engineering',
+  },
+  {
+    value: 'Applied Mathematics',
+    label: 'Applied Mathematics',
+  },
+  {
+    value: 'Art Management',
+    label: 'Art Management',
+  },
+  {
+    value: 'Biology',
+    label: 'Biology',
+  },
+  {
+    value: 'Business Administration',
+    label: 'Business Administration',
+  },
+  {
+    value: 'Chemical Engineering',
+    label: 'Chemical Engineering',
+  },
+  {
+    value: 'Civil Engineering',
+    label: 'Civil Engineering',
+  },
+  {
+    value: 'Communication',
+    label: 'Communication',
+  },
+  {
+    value: 'Computer Engineering',
+    label: 'Computer Engineering',
+  },
+  {
+    value: 'Computer Science',
+    label: 'Computer Science',
+  },
+  {
+    value: 'Criminology',
+    label: 'Criminology',
+  },
+  {
+    value: 'Dentistry',
+    label: 'Dentistry',
+  },
+  {
+    value: 'Education',
+    label: 'Education',
+  },
+  {
+    value: 'Electrical Engineering',
+    label: 'Electrical Engineering',
+  },
+  {
+    value: 'Environmental Science',
+    label: 'Environmental Science',
+  },
+  {
+    value: 'Fashion Design',
+    label: 'Fashion Design',
+  },
+  {
+    value: 'Finance',
+    label: 'Finance',
+  },
+  {
+    value: 'Food Technology',
+    label: 'Food Technology',
+  },
+  {
+    value: 'Health Sciences',
+    label: 'Health Sciences',
+  },
+  {
+    value: 'Hospitality Management',
+    label: 'Hospitality Management',
+  },
+  {
+    value: 'Human Resource Management',
+    label: 'Human Resource Management',
+  },
+  {
+    value: 'Industrial Engineering',
+    label: 'Industrial Engineering',
+  },
+  {
+    value: 'Information Technology',
+    label: 'Information Technology',
+  },
+  {
+    value: 'International Studies',
+    label: 'International Studies',
+  },
+  {
+    value: 'Journalism',
+    label: 'Journalism',
+  },
+  {
+    value: 'Law',
+    label: 'Law',
+  },
+  {
+    value: 'Liberal Arts',
+    label: 'Liberal Arts',
+  },
+  {
+    value: 'Mass Communication',
+    label: 'Mass Communication',
+  },
+  {
+    value: 'Mathematics',
+    label: 'Mathematics',
+  },
+  {
+    value: 'Mechanical Engineering',
+    label: 'Mechanical Engineering',
+  },
+  {
+    value: 'Medicine',
+    label: 'Medicine',
+  },
+  {
+    value: 'Nursing',
+    label: 'Nursing',
+  },
+  {
+    value: 'Pharmacy',
+    label: 'Pharmacy',
+  },
+  {
+    value: 'Philosophy',
+    label: 'Philosophy',
+  },
+  {
+    value: 'Physical Therapy',
+    label: 'Physical Therapy',
+  },
+  {
+    value: 'Physics',
+    label: 'Physics',
+  },
+  {
+    value: 'Political Science',
+    label: 'Political Science',
+  },
+  {
+    value: 'Public Administration',
+    label: 'Public Administration',
+  },
+  {
+    value: 'Real Estate Management',
+    label: 'Real Estate Management',
+  },
+  {
+    value: 'Social Work',
+    label: 'Social Work',
+  },
+  {
+    value: 'Sociology',
+    label: 'Sociology',
+  },
+  {
+    value: 'Theology',
+    label: 'Theology',
+  },
+  {
+    value: 'Tourism Management',
+    label: 'Tourism Management',
+  },
+  {
+    value: 'Veterinary Medicine',
+    label: 'Veterinary Medicine',
+  },
+  {
+    value: 'Web Development',
+    label: 'Web Development',
+  },
+  {
+    value: 'Humanities',
+    label: 'Humanities',
+  },
+  {
+    value: 'Digital Marketing',
+    label: 'Digital Marketing',
+  },
+  {
+    value: 'Sports Management',
+    label: 'Sports Management',
+  },
+  {
+    value: 'Marine Engineering',
+    label: 'Marine Engineering',
+  },
+  {
+    value: 'Film Production',
+    label: 'Film Production',
+  },
+  {
+    value: 'Public Health',
+    label: 'Public Health',
+  },
+  {
+    value: 'Nutrition and Dietetics',
+    label: 'Nutrition and Dietetics',
+  },
+  {
+    value: 'Agriculture',
+    label: 'Agriculture',
+  },
+  {
+    value: 'Education Management',
+    label: 'Education Management',
+  },
+  {
+    value: 'Forensic Science',
+    label: 'Forensic Science',
+  },
+  {
+    value: 'Creative Writing',
+    label: 'Creative Writing',
+  },
+  {
+    value: 'Fashion Marketing',
+    label: 'Fashion Marketing',
+  },
+  {
+    value: 'Digital Arts',
+    label: 'Digital Arts',
+  },
+  {
+    value: 'Graphic Design',
+    label: 'Graphic Design',
+  },
+  {
+    value: 'Library Science',
+    label: 'Library Science',
+  },
+  {
+    value: 'Occupational Therapy',
+    label: 'Occupational Therapy',
+  },
+  {
+    value: 'Recreation and Wellness',
+    label: 'Recreation and Wellness',
+  },
+  {
+    value: 'Supply Chain Management',
+    label: 'Supply Chain Management',
+  },
+  {
+    value: 'Real Estate Development',
+    label: 'Real Estate Development',
+  },
+  {
+    value: 'Public Relations',
+    label: 'Public Relations',
+  },
+  {
+    value: 'Tourism Planning and Development',
+    label: 'Tourism Planning and Development',
+  },
+]
 </script>

@@ -20,10 +20,10 @@ const drawerVisible = ref(false)
 const selectedStudent = ref(null)
 const students = computed(() => store.students)
 
-const openDrawer = () => {
-  selectedStudent.value = null // Reset form when opening
-  drawerVisible.value = true
-}
+// const openDrawer = () => {
+//   selectedStudent.value = null // Reset form when opening
+//   drawerVisible.value = true
+// }
 
 const addStudent = (student) => {
   store.addStudent(student)
