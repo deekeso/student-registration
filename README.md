@@ -96,7 +96,6 @@ When the form is successfully submitted, the data can be processed, stored, or l
   "name": "John Doe",
   "age": 22,
   "birthday": "December 25, 1999",
-  "email": "john.doe@example.com",
   "course": "Computer Science"
 }
 ```
