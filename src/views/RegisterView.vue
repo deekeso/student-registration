@@ -1,57 +1,40 @@
-<script setup lang="ts">
-import RegistrationForm from '../components/RegistrationForm.vue'
-
-const studentData = [
-  {
-    id: 1,
-    icon: 'src/assets/images/f-icon.png',
-    name: 'John Doe',
-    birthday: 'Sept, 20, 2001',
-    age: 23,
-    course: 'Computer Science',
-  },
-  {
-    id: 2,
-    name: 'Coleen Garcia',
-    birthday: 'Sept, 14, 2001',
-    age: 23,
-    course: 'Computer Science',
-  },
-  {
-    id: 3,
-    name: 'Angeline Kate',
-    birthday: 'Nov, 10, 2001',
-    age: 23,
-    course: 'Bachelor in English Education',
-  },
-]
-</script>
-
 <template>
-  <h1>REGISTERED STUDENTS</h1>
-  <RegistrationForm></RegistrationForm>
+  <div class="registration-container">
+    <el-button type="primary" @click="openDrawer">Register Student</el-button>
 
-  <div class="card-container" style="padding: 10px">
-    <el-card v-for="student in studentData" class="details">
-      <img :src="student.icon" alt="" class="card-icon" />
-      <div class="student-details">
-        <h2>{{ student.name }}</h2>
-        <h3>{{ student.course }}</h3>
-      </div>
-    </el-card>
+    <el-drawer v-model="drawerVisible" title="Student Registration">
+      <StudentForm :studentData="selectedStudent" @save="addStudent" />
+    </el-drawer>
+
+    <div class="student-list">
+      <StudentList :students="students" />
+    </div>
   </div>
 </template>
 
+<script setup lang="ts">
+import { ref, computed } from 'vue'
+import { useStudentStore } from '../stores/student'
+import StudentForm from '../components/StudentForm.vue'
+import StudentList from '../components/StudentList.vue'
+const store = useStudentStore()
+const drawerVisible = ref(false)
+const selectedStudent = ref(null)
+const students = computed(() => store.students)
+
+const openDrawer = () => {
+  selectedStudent.value = null // Reset form when opening
+  drawerVisible.value = true
+}
+
+const addStudent = (student: any) => {
+  store.addStudent(student)
+  drawerVisible.value = false
+}
+</script>
+
 <style scoped>
-.card-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
-.card-icon {
-  height: 5em;
-}
-.details {
-  display: flex;
+.registration-container {
+  padding: 20px;
 }
 </style>

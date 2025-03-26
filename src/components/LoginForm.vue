@@ -21,12 +21,7 @@
         ></el-input>
       </el-form-item>
 
-      <el-form-item>
-        <router-link to="/register">
-          <el-button type="plain" width="100%">LOGIN</el-button>
-        </router-link>
-        <!-- <el-button type="plain" plain class="login-btn" @click="onSubmit">LOGIN</el-button> -->
-      </el-form-item>
+      <el-button type="plain" width="100%" @click="onSubmit">LOGIN</el-button>
       <el-form-item>
         <el-text class="mx-1">Forgot Password?</el-text>
       </el-form-item>
@@ -43,7 +38,9 @@
 // import { ref } from 'vue'
 import { reactive } from 'vue'
 import { User, Lock } from '@element-plus/icons-vue'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const loginForm = reactive({
   username: '',
   passInput: '',
@@ -59,7 +56,7 @@ const loginData: {
 
 function onSubmit() {
   if (loginForm.username === loginData.username && loginForm.passInput === loginData.password) {
-    this.$router.push('/register')
+    router.push('/register')
   } else {
     console.error('incorrect username or password')
   }
