@@ -21,7 +21,7 @@
         ></el-input>
       </el-form-item>
 
-      <el-button type="plain" width="100%" @click="onSubmit">LOGIN</el-button>
+      <el-button type="plain" width="100%" @click="onSubmit" class="login-btn">LOGIN</el-button>
       <el-form-item>
         <el-text class="mx-1">Forgot Password?</el-text>
       </el-form-item>
@@ -62,10 +62,5 @@ function onSubmit() {
   }
 }
 </script>
-<!-- 
-<style scoped>
-.el-input__wrapper,
-.form-container {
-  background-color: transparent;
-}
-</style> -->
+
+<style scoped></style>

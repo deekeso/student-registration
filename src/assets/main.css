@@ -1,4 +1,5 @@
 @import './base.css';
+@import './login.css';
 
 #app {
   width: 100%;
@@ -42,31 +43,6 @@
   position: absolute;
   bottom: 0;
   left: 0;
-}
-.forgot-pass-text {
-  color: white;
-  text-align: right;
-}
-.form-container {
-  height: auto;
-  width: auto;
-}
-.form-container,
-.form-container *,
-.login-btn,
-.forgot-pass-text {
-  z-index: 1000;
-}
-.login-btn {
-  width: 100%;
-}
-.user-input {
-  background-color: transparent;
-  border: 1px solid white;
-  border-radius: 5px;
-}
-.el-input__wrapper {
-  background-color: transparent;
 }
 .drawer {
   margin: 0;

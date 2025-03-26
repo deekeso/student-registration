@@ -36,7 +36,6 @@
             :key="item.value"
             :label="item.label"
             :value="item.value"
-            :disabled="item.disabled"
           />
           <el-option label="BS HRM" value="BS HRM" />
         </el-select>
@@ -67,9 +66,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps, defineEmits } from 'vue'
+import { ref, defineEmits } from 'vue'
 
-const props = defineProps<{ studentData?: any }>()
+// const props = defineProps<{ studentData?: any }>()
 const emit = defineEmits(['save'])
 const visible = ref(false)
 const confirmVisible = ref(false)
@@ -93,7 +92,7 @@ const rules = {
   age: [{ validator: validateAge, trigger: 'blur' }],
 }
 
-function validateAge(rule: any, value: any, callback: any) {
+function validateAge(rule: string, value: number, callback: any) {
   if (value < 16) {
     callback(new Error('Student must be at least 16 years old'))
   } else {
@@ -101,7 +100,7 @@ function validateAge(rule: any, value: any, callback: any) {
   }
 }
 
-const validateBirthDate = (rule: any, value: any, callback: any) => {
+const validateBirthDate = (rule: string, value: string, callback: any) => {
   if (!value) {
     callback(new Error('Birth Date is required'))
   } else if (new Date(value) > new Date()) {
