@@ -27,11 +27,7 @@
       </el-form-item>
     </el-form>
   </div>
-
-  <img src="../assets/images/Vector.svg" aria-disabled="true" class="bg-1 bg" />
-  <img src="../assets/images/Ellipse.svg" aria-disabled="true" class="ellipse bg" />
-  <img src="../assets/images/Ellipse-1.svg" aria-disabled="true" class="ellipse bg" />
-  <img src="../assets/images/Ellipse-2.svg" aria-disabled="true" class="ellipse bg" />
+  <Background></Background>
 </template>
 
 <script lang="ts" setup>
@@ -39,6 +35,7 @@
 import { reactive } from 'vue'
 import { User, Lock } from '@element-plus/icons-vue'
 import { useRouter } from 'vue-router'
+import Background from '../components/BackgroundImg.vue'
 
 const router = useRouter()
 const loginForm = reactive({

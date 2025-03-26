@@ -15,11 +15,12 @@
   background-color: transparent;
   border: 1px solid var(--white);
   border-radius: 5px;
+  color: var(--white);
 }
 .el-input__wrapper {
   background-color: transparent;
 }
-.el-input__wrapper > *,
+el-input__prefix-inner,
 .el-input__inner,
 .el-text {
   color: white;

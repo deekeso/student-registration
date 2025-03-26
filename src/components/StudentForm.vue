@@ -6,11 +6,11 @@
       </el-form-item>
 
       <el-form-item label="Middle Initial" prop="middleInitial">
-        <el-input v-model="student.middleInitial" maxlength="1" />
+        <el-input v-model="student.middleInitial" maxlength="1" class="form-input" />
       </el-form-item>
 
       <el-form-item label="Last Name" prop="lastName">
-        <el-input v-model="student.lastName" />
+        <el-input v-model="student.lastName" class="form-input" />
       </el-form-item>
 
       <el-form-item
@@ -26,11 +26,11 @@
       </el-form-item>
 
       <el-form-item label="Address">
-        <el-input v-model="student.address" />
+        <el-input v-model="student.address" class="form-input" />
       </el-form-item>
 
       <el-form-item label="Course">
-        <el-select v-model="student.course">
+        <el-select v-model="student.course" class="form-input">
           <el-option
             v-for="item in courses"
             :key="item.value"

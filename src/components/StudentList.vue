@@ -12,9 +12,19 @@
         :xl="4"
       >
         <el-card shadow="hover" class>
-          <h3>{{ student.firstName }} {{ student.lastName }}</h3>
-          <p><b>Course:</b> {{ student.course }}</p>
-          <p><b>Age:</b> {{ student.age }}</p>
+          <div class="student-container">
+            <div class="details">
+              <img src="../assets/images/icon.png" alt="student-icon" class="icon" />
+              <h2>{{ student.firstName }} {{ student.lastName }}</h2>
+              <h3>{{ student.course }}</h3>
+              <p>{{ student.age }} years old</p>
+              <p class="address">
+                <Location style="width: 1em; height: 1em; margin-right: 0.2em" />
+                {{ student.address }}
+              </p>
+            </div>
+          </div>
+
           <el-button type="warning" @click="editStudent(student, index)">Edit</el-button>
           <el-button type="danger" @click="store.deleteStudent(index)">Delete</el-button>
         </el-card>

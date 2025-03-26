@@ -15,15 +15,16 @@
 .el-input__wrapper:focus {
   border: 2px solid var(--blue);
 }
-.el-input__inner,
+/* .el-input__inner,
 .el-form-item__label {
   color: var(--black-soft);
-}
-.el-input__prefix-inner {
-  color: var(--blue);
+} */
+.form-input :deep(.el-input__inner) {
+  color: black;
 }
 .el-drawer {
   width: 80%;
+  background-color: var(--blue);
 }
 .el-col {
   margin-bottom: 20px;
@@ -34,5 +35,31 @@
 
 /* card styles */
 .el-card {
-  background: ;
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  justify-items: center;
+  text-align: center;
+  border: 1px solid black;
+}
+.el-card * {
+  margin-block: 5px;
+}
+.icon {
+  height: 6rem;
+  border-radius: 100%;
+}
+h2 {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+h3 {
+  font-weight: 500;
+  color: grey;
+}
+.address {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
