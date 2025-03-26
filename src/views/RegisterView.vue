@@ -27,7 +27,7 @@ const openDrawer = () => {
   drawerVisible.value = true
 }
 
-const addStudent = (student: any) => {
+const addStudent = (student) => {
   store.addStudent(student)
   drawerVisible.value = false
 }
