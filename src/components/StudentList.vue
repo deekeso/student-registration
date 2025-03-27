@@ -12,6 +12,9 @@
         :xl="1"
       >
         <el-card class="student-card" shadow="hover">
+          <div class="img-container">
+            <img src="../assets/images/icon.jpg" alt="student-icon" class="student-icon" />
+          </div>
           <div class="student-container">
             <div class="details">
               <!-- <img src="../assets/images/icon.jpg" alt="student-icon" class="icon" /> -->
@@ -38,7 +41,6 @@
       </el-col>
     </el-row>
   </div>
-  <!-- store.deleteStudent(index) -->
   <StudentForm ref="formRef" @save="saveStudent" />
   <ConfirmDelete ref="deleteModal" @confirm="deleteStudent" />
 </template>
@@ -100,7 +102,7 @@ const deleteStudent = () => {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 .details {
@@ -148,5 +150,19 @@ const deleteStudent = () => {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #7d9cff;
+}
+
+.student-icon {
+  height: 6rem;
+  aspect-ratio: 1;
+  border-radius: 100%;
+}
+
+.img-container {
+  background-color: darkgray;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-block: 0.2rem;
 }
 </style>
