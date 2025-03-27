@@ -20,7 +20,7 @@
               <!-- <img src="../assets/images/icon.jpg" alt="student-icon" class="icon" /> -->
               <h2>{{ student.firstName }} {{ student.lastName }}</h2>
               <h3>{{ student.course }}</h3>
-              <p>{{ student.age }} years old</p>
+              <p>{{ student.birthDate }} | {{ student.age }} years old</p>
               <p class="address">
                 <Location style="width: 1em; height: 1em; margin-right: 0.2em" />
                 {{ student.address }}

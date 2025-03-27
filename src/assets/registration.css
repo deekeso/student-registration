@@ -51,7 +51,7 @@ body {
 
 /* card styles */
 .el-card {
-  height: 100%;
+  /* height: 100%; */
   width: 100%;
   background: var(--white-soft);
   justify-items: center;

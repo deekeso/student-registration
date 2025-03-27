@@ -1,7 +1,7 @@
 <template>
   <el-drawer v-model="visible" :title="isEditing ? 'Edit Student' : 'Add Student'" size="50%">
     <el-form ref="formRef" :model="student" :rules="rules" label-width="120px">
-      <el-row :gutter="10">
+      <el-row :gutter="10" class="row-height">
         <el-col :xs:="24" :md="9">
           <el-form-item label="First Name" prop="firstName">
             <el-input v-model="student.firstName" />
@@ -26,7 +26,13 @@
             prop="birthDate"
             :rules="[{ validator: validateBirthDate, trigger: 'change' }]"
           >
-            <el-date-picker v-model="student.birthDate" type="date" @change="calculateAge" />
+            <el-date-picker
+              v-model="student.birthDate"
+              format="MM-DD-YYYY"
+              value-format="MM-DD-YYYY"
+              type="date"
+              @change="calculateAge"
+            />
           </el-form-item>
         </el-col>
 
@@ -79,7 +85,7 @@
 
 <script setup lang="ts">
 import { ref, defineEmits } from 'vue'
-
+import { dayjs } from 'element-plus'
 // const props = defineProps<{ studentData?: any }>()
 const emit = defineEmits(['save'])
 const visible = ref(false)
@@ -149,7 +155,7 @@ const formatDate = (date: string | Date) => {
   if (!date) return ''
   const parsedDate = new Date(date)
   if (isNaN(parsedDate.getTime())) return ''
-  return parsedDate.toISOString().split('T')[0] // Convert to YYYY-MM-DD
+  return dayjs(date).format('MM-DD-YYYY')
 }
 
 // **Reset Form on Open**
