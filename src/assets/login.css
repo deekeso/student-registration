@@ -13,7 +13,6 @@
 }
 .user-input {
   background-color: transparent;
-  border: 1px solid var(--white);
   border-radius: 5px;
   color: var(--white);
 }
@@ -33,7 +32,6 @@ el-input__prefix-inner,
 .form-container {
   max-width: 300px;
   width: 100%;
-  border: 1px solid white;
 }
 
 .el-form-item {
