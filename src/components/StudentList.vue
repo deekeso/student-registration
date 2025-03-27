@@ -37,12 +37,27 @@
               <span>Delete</span>
             </el-button>
           </div>
+
+          <el-dialog v-model="deleteModal" title="Confirm Delete">
+            <p>Do you want to continue?</p>
+
+            <el-button @click="deleteModal = false">Cancel</el-button>
+            <el-button
+              type="danger"
+              @click="
+                () => {
+                  store.deleteStudent(index)
+                  deleteModal = false
+                }
+              "
+              >Delete</el-button
+            >
+          </el-dialog>
         </el-card>
       </el-col>
     </el-row>
   </div>
   <StudentForm ref="formRef" @save="saveStudent" />
-  <ConfirmDelete ref="deleteModal" @confirm="deleteStudent" />
 </template>
 
 <script setup lang="ts">
@@ -77,13 +92,12 @@ const saveStudent = (student: any) => {
 }
 
 const confirmDelete = (index: number) => {
-  studentToDelete.value = index
-  deleteModal.value.open()
+  deleteModal.value = true
 }
 
 const deleteStudent = () => {
   if (studentToDelete.value !== null) {
-    store.deleteStudent(studentToDelete.value)
+    store.deleteStudent(index)
   }
 }
 </script>

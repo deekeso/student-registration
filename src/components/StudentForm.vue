@@ -43,7 +43,7 @@
         </el-col>
       </el-row>
 
-      <el-form-item label="Address">
+      <el-form-item label="Address" required>
         <el-input v-model="student.address" class="form-input" />
       </el-form-item>
 
@@ -108,6 +108,7 @@ const rules = {
   lastName: [{ required: true, message: 'Last name is required', trigger: 'blur' }],
   birthDate: [{ required: true, message: 'Birth date is required', trigger: 'change' }],
   age: [{ validator: validateAge, trigger: 'blur' }],
+  address: [{ required: true, message: 'Address is required', trigger: 'blur' }],
 }
 
 function validateAge(rule: string, value: number, callback: any) {
