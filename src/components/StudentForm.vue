@@ -111,7 +111,7 @@ const rules = {
   firstName: [{ required: true, message: 'First name is required', trigger: 'blur' }],
   lastName: [{ required: true, message: 'Last name is required', trigger: 'blur' }],
   birthDate: [{ required: true, message: 'Birth date is required', trigger: 'change' }],
-  age: [{ validator: validateAge, message: 'Age must be 16 and above', trigger: 'blur' }],
+  age: [{ validator: validateAge, message: 'Age must be 16 and above', trigger: 'change' }],
   address: [{ required: true, message: 'Address is required', trigger: 'blur' }],
   course: [{ required: true, message: 'Course is required', trigger: 'change' }],
 }
