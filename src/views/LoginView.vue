@@ -53,6 +53,7 @@ const loginData: {
 
 function onSubmit() {
   if (loginForm.username === loginData.username && loginForm.passInput === loginData.password) {
+    localStorage.setItem('auth', 'true')
     router.push('/register')
   } else {
     console.error('incorrect username or password')

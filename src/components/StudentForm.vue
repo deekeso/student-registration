@@ -37,7 +37,7 @@
         </el-col>
 
         <el-col :xs="24" :sm="12">
-          <el-form-item label="Age">
+          <el-form-item label="Age" :rules="[{ validator: validateAge, trigger: 'blur' }]">
             <el-input v-model="student.age" disabled />
           </el-form-item>
         </el-col>
@@ -47,7 +47,7 @@
         <el-input v-model="student.address" class="form-input" />
       </el-form-item>
 
-      <el-form-item label="Course">
+      <el-form-item label="Course" required>
         <el-select v-model="student.course" class="form-input">
           <el-option
             v-for="item in courses"
@@ -107,12 +107,12 @@ const rules = {
   firstName: [{ required: true, message: 'First name is required', trigger: 'blur' }],
   lastName: [{ required: true, message: 'Last name is required', trigger: 'blur' }],
   birthDate: [{ required: true, message: 'Birth date is required', trigger: 'change' }],
-  age: [{ validator: validateAge, trigger: 'blur' }],
+  age: [{ validator: validateAge, message: 'Age must be 16 and above', trigger: 'blur' }],
   address: [{ required: true, message: 'Address is required', trigger: 'blur' }],
 }
 
 function validateAge(rule: string, value: number, callback: any) {
-  if (value < 16) {
+  if (student.value.age < 16) {
     callback(new Error('Student must be at least 16 years old'))
   } else {
     callback()
@@ -190,7 +190,6 @@ const confirmSubmit = () => {
     if (valid) {
       confirmVisible.value = true
     } else {
-      alert('Form validation failed')
       return
     }
   })

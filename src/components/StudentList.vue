@@ -64,7 +64,6 @@
 import { ref } from 'vue'
 import { useStudentStore } from '../stores/student'
 import StudentForm from './StudentForm.vue'
-import ConfirmDelete from './ConfirmDelete.vue'
 
 const store = useStudentStore()
 const formRef = ref()
