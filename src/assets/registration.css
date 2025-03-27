@@ -8,6 +8,9 @@ body {
   color: var(--white);
   text-align: center;
   align-content: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .save-btn {
   background-color: var(--white);
