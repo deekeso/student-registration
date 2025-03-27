@@ -1,6 +1,6 @@
 <template>
-  <el-button type="primary" @click="openForm">Add Student</el-button>
   <div class="card-container">
+    <el-button type="primary" @click="openForm" class="add-btn">Add Student</el-button>
     <el-row :gutter="20" v-infinite-scroll="load" class="infinite-list" style="overflow: auto">
       <el-col
         v-for="(student, index) in store.students"
@@ -11,7 +11,7 @@
         :lg="6"
         :xl="1"
       >
-        <el-card shadow="hover" class>
+        <el-card class="student-card" shadow="hover">
           <div class="student-container">
             <div class="details">
               <!-- <img src="../assets/images/icon.jpg" alt="student-icon" class="icon" /> -->
@@ -27,9 +27,11 @@
           <div class="btn-container">
             <el-button @click="editStudent(student, index)">
               <el-icon><Edit class="edit-icon icon-btn" /></el-icon>
+              <span>Edit</span>
             </el-button>
             <el-button type="danger" @click="confirmDelete">
               <el-icon class="edit-icon icon-btn"><Delete /></el-icon>
+              <span>Delete</span>
             </el-button>
           </div>
         </el-card>
@@ -85,6 +87,28 @@ const deleteStudent = () => {
 </script>
 
 <style>
+.add-btn {
+  margin-bottom: 10px;
+}
+.card-container {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.2rem;
+}
+.el-card__body {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.details {
+  flex-grow: 1;
+}
+.btn-container {
+  margin-top: auto;
+}
 .infinite-list {
   height: 80vh;
   padding: 0;
