@@ -9,7 +9,7 @@
         </el-col>
 
         <el-col :xs="24" :md="6">
-          <el-form-item label="Middle Initial" prop="middleInitial" required>
+          <el-form-item label="Middle Initial" prop="middleInitial">
             <el-input v-model="student.middleInitial" maxlength="1" class="form-input" />
           </el-form-item>
         </el-col>
@@ -91,7 +91,7 @@ const emit = defineEmits(['save'])
 const visible = ref(false)
 const confirmVisible = ref(false)
 const isEditing = ref(false)
-
+const formRef = ref(null)
 const student = ref({
   firstName: '',
   middleInitial: '',
@@ -185,7 +185,15 @@ const openDrawer = (data?: any) => {
 
 // **Confirm Before Submission**
 const confirmSubmit = () => {
-  confirmVisible.value = true
+  formRef.value.validate((valid) => {
+    if (valid) {
+      confirmVisible.value = true
+    } else {
+      alert('Form validation failed')
+      return
+    }
+  })
+
   console.log('Submitted Student Data:', {
     ...student.value,
     birthDate: formatDate(student.value.birthDate),
