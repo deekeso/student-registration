@@ -28,7 +28,7 @@
             <el-button @click="editStudent(student, index)">
               <el-icon><Edit class="edit-icon icon-btn" /></el-icon>
             </el-button>
-            <el-button type="danger" @click="store.deleteStudent(index)">
+            <el-button type="danger" @click="confirmDelete">
               <el-icon class="edit-icon icon-btn"><Delete /></el-icon>
             </el-button>
           </div>
@@ -36,17 +36,21 @@
       </el-col>
     </el-row>
   </div>
-
+  <!-- store.deleteStudent(index) -->
   <StudentForm ref="formRef" @save="saveStudent" />
+  <ConfirmDelete ref="deleteModal" @confirm="deleteStudent" />
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useStudentStore } from '../stores/student'
 import StudentForm from './StudentForm.vue'
+import ConfirmDelete from './ConfirmDelete.vue'
 
 const store = useStudentStore()
 const formRef = ref()
+const deleteModal = ref(false)
+const studentToDelete = ref<number | null>(null)
 
 const openForm = () => {
   formRef.value.openDrawer()
@@ -61,6 +65,17 @@ const saveStudent = (student: any) => {
     store.updateStudent(student.index, student)
   } else {
     store.addStudent(student)
+  }
+}
+
+const confirmDelete = (index: number) => {
+  studentToDelete.value = index
+  deleteModal.value.open()
+}
+
+const deleteStudent = () => {
+  if (studentToDelete.value !== null) {
+    store.deleteStudent(studentToDelete.value)
   }
 }
 </script>
