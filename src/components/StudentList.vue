@@ -178,4 +178,7 @@ const deleteStudent = () => {
   justify-content: center;
   padding-block: 0.2rem;
 }
+.card-container {
+  background-color: hsla(0, 0%, 100%, 0.123);
+}
 </style>
