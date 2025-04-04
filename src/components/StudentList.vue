@@ -1,7 +1,8 @@
 <template>
   <div class="card-container">
-    <el-button type="primary" @click="openForm" class="add-btn">Add Student</el-button>
-    <el-row :gutter="20" v-infinite-scroll="load" class="infinite-list" style="overflow: auto">
+    <!-- <el-button type="primary" @click="openForm" class="add-btn">Add Student</el-button> -->
+    <!-- <el-row :gutter="20" v-infinite-scroll="load" class="infinite-list" style="overflow: auto">
+
       <el-col
         v-for="(student, index) in store.students"
         :key="index"
@@ -9,8 +10,8 @@
         :sm="12"
         :md="8"
         :lg="6"
-        :xl="1"
-      >
+        :xl="6"
+      > -->
         <el-card class="student-card" shadow="hover">
           <div class="img-container">
             <img src="../assets/images/icon.jpg" alt="student-icon" class="student-icon" />
@@ -18,21 +19,23 @@
           <div class="student-container">
             <div class="details">
               <!-- <img src="../assets/images/icon.jpg" alt="student-icon" class="icon" /> -->
-              <h2>{{ student.firstName }} {{ student.lastName }}</h2>
-              <h3>{{ student.course }}</h3>
-              <p>{{ student.birthDate }} | {{ student.age }} years old</p>
+              <h2>{{ props.student?.firstName }} {{ props.student?.lastName }}</h2>
+              <h3>{{ props.student?.course }}</h3>
+              <p>{{ props.student?.birthDate }} | {{ props.student?.age }} years old</p>
               <p class="address">
                 <Location style="width: 1em; height: 1em; margin-right: 0.2em" />
-                {{ student.address }}
+                {{ props.student?.address }}
               </p>
             </div>
           </div>
           <div class="btn-container">
-            <el-button @click="editStudent(student, index)">
+            <!-- @click="editStudent(student, i)" -->
+            <el-button >
               <el-icon><Edit class="edit-icon icon-btn" /></el-icon>
               <span>Edit</span>
             </el-button>
-            <el-button type="danger" @click="confirmDelete">
+            <!--  @click="confirmDelete" -->
+            <el-button type="danger">
               <el-icon class="edit-icon icon-btn"><Delete /></el-icon>
               <span>Delete</span>
             </el-button>
@@ -42,28 +45,38 @@
             <p>Do you want to continue?</p>
 
             <el-button @click="deleteModal = false">Cancel</el-button>
-            <el-button
-              type="danger"
-              @click="
+            <!-- @click="
                 () => {
-                  store.deleteStudent(index)
+                  store.deleteStudent(i)
                   deleteModal = false
                 }
-              "
+              " -->
+            <el-button
+              type="danger"
+              
               >Delete</el-button
             >
           </el-dialog>
         </el-card>
-      </el-col>
-    </el-row>
+      <!-- </el-col>
+    </el-row> -->
   </div>
-  <StudentForm ref="formRef" @save="saveStudent" />
+  <!-- <StudentForm ref="formRef" @save="saveStudent" /> -->
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, type PropType } from 'vue'
+import type {StudentType} from '@/models/types'
 import { useStudentStore } from '../stores/student'
 import StudentForm from './StudentForm.vue'
+
+const props = defineProps({
+  student: {
+    type: Object as PropType<StudentType>,
+    required: false
+  }
+})
+
 
 const store = useStudentStore()
 const formRef = ref()
@@ -78,27 +91,27 @@ const openForm = () => {
   formRef.value.openDrawer()
 }
 
-const editStudent = (student: any, index: number) => {
-  formRef.value.openDrawer({ ...student, index })
-}
+// const editStudent = (student: any, index: number) => {
+//   formRef.value.openDrawer({ ...student, index })
+// }
 
-const saveStudent = (student: any) => {
-  if (student.index !== undefined) {
-    store.updateStudent(student.index, student)
-  } else {
-    store.addStudent(student)
-  }
-}
+// const saveStudent = (student: any) => {
+//   if (student.index !== undefined) {
+//     store.updateStudent(student.index, student)
+//   } else {
+//     store.addStudent(student)
+//   }
+// }
 
-const confirmDelete = (index: number) => {
-  deleteModal.value = true
-}
+// const confirmDelete = (index: number) => {
+//   deleteModal.value = true
+// }
 
-const deleteStudent = () => {
-  if (studentToDelete.value !== null) {
-    store.deleteStudent(index)
-  }
-}
+// const deleteStudent = () => {
+//   if (studentToDelete.value !== null) {
+//     store.deleteStudent(index)
+//   }
+// }
 </script>
 
 <style>

@@ -1,6 +1,25 @@
 <template>
-  <div class="background">
-    <el-form class="form-container">
+  <el-row align="middle" justify="center" >
+    <el-col :span="6">
+      <el-card style="background-color: transparent;">
+        <el-row>
+            <el-col>
+              <el-form ref="form" style="width: 100%;">
+                  <el-form-item>
+                    <el-input style="width: 100%;" placeholder="Username" />
+                  </el-form-item>
+                  <el-form-item>
+                    <el-input style="width: 100%;" type="password" placeholder="Password" suffix-icon="eye" />
+                  </el-form-item>
+              </el-form>
+            </el-col>
+        </el-row>
+      </el-card>
+    </el-col>
+  </el-row>
+  <!-- class="background" -->
+  <!-- <div > -->
+    <!-- <el-form class="form-container">
       <el-form-item :model="loginForm">
         <el-input
           v-model="loginForm.username"
@@ -25,18 +44,19 @@
       <el-form-item>
         <el-text class="mx-1">Forgot Password?</el-text>
       </el-form-item>
-    </el-form>
-  </div>
-  <Background></Background>
+    </el-form> -->
+  <!-- </div> -->
+  <!-- <Background></Background> -->
 </template>
 
 <script lang="ts" setup>
-// import { ref } from 'vue'
+import { ref } from 'vue'
 import { reactive } from 'vue'
 import { User, Lock } from '@element-plus/icons-vue'
 import { useRouter } from 'vue-router'
 import Background from '../components/BackgroundImg.vue'
 
+const form = ref()
 const router = useRouter()
 const loginForm = reactive({
   username: '',
