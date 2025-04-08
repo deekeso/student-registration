@@ -1,13 +1,13 @@
-export interface EnrollmentType extends commonType {
+// export interface EnrollmentType extends commonType {
 
-    date?: Date
-    year?: number
-}
+//     date?: Date
+//     year?: number
+// }
 
-export interface CourseType extends commonType {
-    name?: string
-    description?: string
-}
+// export interface CourseType extends commonType {
+//     name?: string
+//     description?: string
+// }
 
 export interface StudentType extends commonType {
     firstName?: string
@@ -16,10 +16,19 @@ export interface StudentType extends commonType {
     birthDate?: string
     age?: number
     address?: string
-    course?: CourseType
-    enrollments?: Array<EnrollmentType>
 }
 
 export interface commonType {
     id?: number
+}
+export interface LoginType {
+    username?: string
+    password?: string
+}
+
+export interface UserType extends LoginType {
+    firstName?: string
+    middleName?: string
+    lastName?: string
+    role?: string
 }

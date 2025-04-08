@@ -8,6 +8,29 @@
   font-weight: normal;
   background-color: black;
   height: 100lvh;
+  color: #F97316;
+}
+
+h2{
+  color: #F97316
+}
+
+.el-icon{
+  color: #F97316;
+}
+
+.el-button--primary{
+  background-color: #F97316;
+  border-color: #F97316;
+}
+
+.is-plain{
+  background-color: transparent;
+  color: #F97316;
+}
+
+.el-form-item__error{
+  padding-top: 0px;
 }
 
 /* @media (hover: hover) {
