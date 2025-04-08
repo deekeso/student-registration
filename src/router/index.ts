@@ -1,11 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import LoginView from '../views/LoginView.vue'
+import LoginView from '@/views/LoginView.vue'
+import DefaultView from '@/layouts/default.vue'
 import RegisterView from '../views/RegisterView.vue'
+import StudentsView from '@/views/StudentsView.vue'
+import { useAuthStore } from '@/stores/auth'
+import { useRouter } from 'vue-router'
 
-// Simulated authentication check
-const isAuthenticated = () => {
-  // Replace this with real authentication logic
-  return localStorage.getItem('auth') === 'true'
+const isLoggedIn = () => {
+  return localStorage.getItem('isLoggedIn') === 'true'
 }
 
 const router = createRouter({
@@ -13,24 +15,46 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'login',
+      name: 'Login',
       component: LoginView,
     },
     {
-      path: '/register',
-      name: 'register',
-      component: RegisterView,
+      path: '/main',
+      name: 'Main',
+      component: DefaultView,
+      meta: {
+        title: 'Main',
+        requiresAuth: false
+      },
+      beforeEnter: async(to: any, from: any, next: any) => {
+        if(!isLoggedIn()) {
+          console.log('isLoggedIn :>> ', isLoggedIn())
+          next('/')
+        } else {
+          console.log('isLoggedIn :>> ', isLoggedIn())
+          next()
+        }
+      },
+      children: [
+        {
+          path: '/students',
+          name: 'Students',
+          component: StudentsView
+        }
+      ]
     },
   ],
 })
 
-// Navigation guard for protected routes
 router.beforeEach((to, from, next) => {
-  if (to.meta.requiresAuth && !isAuthenticated()) {
-    next('/login') // Redirect to login if not authenticated
-  } else {
-    next() // Allow access
+  if(!isLoggedIn() && to.name !== 'Login') {
+    console.log('isLoggedIns2 :>> ', isLoggedIn())
+    next('/')
+  }
+  else {
+    console.log('isLoggedIns3 :>> ', isLoggedIn())
+    next()
   }
 })
-
+router.afterEach(() => {})
 export default router

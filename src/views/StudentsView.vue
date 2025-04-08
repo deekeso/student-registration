@@ -1,6 +1,6 @@
 <template>
     <div>
-
+        <span style="color: white;">SAMPLE</span>
     </div>
 </template>
 

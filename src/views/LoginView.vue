@@ -1,7 +1,7 @@
 <template>
   <el-row align="middle" justify="center" >
     <el-col :span="6">
-      <el-card style="background-color: transparent;">
+      <el-card style="background-color: transparent;" v-loading="loading">
         <el-row>
             <el-col :span="24">
               <el-icon :size="32" style="color:"><DataBoard /></el-icon>
@@ -39,8 +39,11 @@ import useGlobalUtils from '@/composables/useGlobalUtils'
 
 
 const form = ref()
-const {login, getUser} = useAuthStore()
+const loading = ref(false)
+// const {login, getUser, checkLoggedIn} = useAuthStore()
+const auth = useAuthStore()
 const {errorNotification} = useGlobalUtils()
+const router = useRouter()
 const userLogin = reactive<LoginType>({})
 const rules = {
   username: [{required: true, message: 'Invalid username!', trigger: 'blur'}],
@@ -49,9 +52,13 @@ const rules = {
 
 const handleLogin = async() => {
   try {
+    loading.value = true
     await form.value.validate()
-    await login(userLogin)
-    
+    await auth.login(userLogin)
+    let checkLogin = await auth.checkLoggedIn
+    console.log("checkLogin :>> ", checkLogin)
+    if(checkLogin === 'true') router.push({name: 'Students'})
+    loading.value = false
   } catch (error) {
     console.error(error)
   }
