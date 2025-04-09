@@ -5,14 +5,16 @@ export default function useGlobalUtils() {
         ElNotification.success({
             title: title,
             message: message,
-            showClose: true
+            showClose: true,
+            position: 'bottom-right'
         })
     }
     const errorNotification = (title: string, message: string) => {
         ElNotification.error({
             title: title,
             message: message,
-            showClose: true
+            showClose: true,
+            position: 'bottom-right'
         })
     }
     return {

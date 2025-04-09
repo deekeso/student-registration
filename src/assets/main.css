@@ -11,8 +11,39 @@
   color: #F97316;
 }
 
+:root{
+  --el-menu-hover-bg-color: #fac59f;
+  --el-menu-hover-text-color: #F97316;
+}
+
 h2{
   color: #F97316
+}
+
+.el-card__body{
+  width: 100%;
+}
+.main-container {
+  padding: 1rem
+}
+
+.main-page{
+  background-color: #a7a6a6;
+  min-height: 88lvh;
+  padding: 1rem;
+}
+
+.el-menu {
+  background-color: #F97316;
+}
+
+.el-menu--horizontal.el-menu{
+  border-bottom: #F97316;
+}
+
+.el-menu-item.is-disabled{
+  opacity: 1;
+  cursor: pointer;
 }
 
 .el-icon{

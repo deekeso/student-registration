@@ -4,7 +4,7 @@
       <el-card style="background-color: transparent;" v-loading="loading">
         <el-row>
             <el-col :span="24">
-              <el-icon :size="32" style="color:"><DataBoard /></el-icon>
+              <el-icon :size="32"><DataBoard /></el-icon>
             </el-col>
             <el-col :span="24">
               <h2>Student Registration</h2>
@@ -55,14 +55,13 @@ const handleLogin = async() => {
     loading.value = true
     await form.value.validate()
     await auth.login(userLogin)
-    let checkLogin = await auth.checkLoggedIn
-    console.log("checkLogin :>> ", checkLogin)
-    if(checkLogin === 'true') router.push({name: 'Students'})
+    const checkLogin = await auth.checkLoggedIn
+    if(checkLogin === 'true') router.push({path: '/main'})
     loading.value = false
   } catch (error) {
     console.error(error)
   }
-  
+
 }
 </script>
 

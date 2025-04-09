@@ -27,8 +27,8 @@ export const useAuthStore = defineStore('auth', {
             else errorNotification('Error', 'Incorrect Username or Password!')
         },
         logout:() => {
-            localStorage.clear()
-            location.reload()
+          localStorage.clear()
+          location.reload()
         }
     },
     getters: {
