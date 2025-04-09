@@ -20,6 +20,18 @@ h2{
   color: #F97316
 }
 
+.el-descriptions__body{
+  background-color: transparent;
+}
+
+.el-descriptions__body .el-descriptions__table:not(.is-bordered) .el-descriptions__cell {
+  padding-bottom: 0px;
+}
+
+.el-descriptions__body .el-descriptions__table .el-descriptions__cell{
+  line-height: 18px;
+}
+
 .el-card__body{
   width: 100%;
 }

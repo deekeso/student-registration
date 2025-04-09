@@ -17,8 +17,15 @@ export default function useGlobalUtils() {
             position: 'bottom-right'
         })
     }
+
+    const truncateText = (str: string, len: number) => {
+      if(str.length <= len) return
+      return str.slice(0, len) + ' . . .'
+    }
+
     return {
         successNotification,
+        truncateText,
         errorNotification
     }
 }
