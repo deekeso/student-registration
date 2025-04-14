@@ -9,13 +9,18 @@
 //     description?: string
 // }
 
+export interface CouseType {
+    code?: string
+    name?: string
+}
 export interface StudentType extends commonType {
     firstName?: string
-    middleInitial?: string
+    middleName?: string
     lastName?: string
-    birthDate?: string
+    birthDate?: Date
     age?: number
     address?: string
+    course?: string
 }
 
 export interface commonType {

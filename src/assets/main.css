@@ -32,6 +32,24 @@ h2{
   line-height: 18px;
 }
 
+.el-drawer{
+  background-color: rgb(53, 53, 53);
+}
+
+.el-textarea__inner{
+  background-color: transparent;
+  border-color: #e2e2e2;
+  color: #e2e2e2;
+}
+
+.el-drawer__header {
+  background-color: rgb(73, 73, 73);
+}
+
+.el-col{
+  margin-bottom: 0px;
+}
+
 .el-card__body{
   width: 100%;
 }
