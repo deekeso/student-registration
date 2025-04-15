@@ -14,9 +14,7 @@
 <script setup lang="ts">
 import RegisterCard from  "@/components/register/card.vue";
 import type { StudentType } from '@/models/types'
-// import { }
-// const students = 
-// const students: Array<StudentType> = JSON.parse(localStorage.getItem('students') || '[]')
+const students: Array<StudentType> = JSON.parse(localStorage.getItem('students') || '[]')
 </script>
 
 <style scoped>
